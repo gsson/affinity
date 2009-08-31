@@ -1,0 +1,14 @@
+Source: affinity
+Section: python
+Priority: extra
+Maintainer: Henrik Gustafsson <gsson@fnord.se>
+Build-Depends: debhelper (>> 7), python, python-central (>= 0.5)
+Standards-Version: 3.8.0
+XS-Python-Version: 2.5
+
+Package: python-affinity
+Section: python
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, python-multiprocessing
+Description: Manipulate process CPU affinity from Python
+ python-affinity is a small linux-only API to manipulate the CPU affinity for processes.
