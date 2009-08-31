@@ -9,6 +9,6 @@ XS-Python-Version: 2.5
 Package: python-affinity
 Section: python
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-multiprocessing
+Depends: ${python:Depends}
 Description: Manipulate process CPU affinity from Python
  python-affinity is a small linux-only API to manipulate the CPU affinity for processes.
