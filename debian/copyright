@@ -2,7 +2,7 @@ Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=59
 Name: affinity
 Source: http://github.com/gsson/affinity
 
-Copyright: 2009, Henrik Gustafsson <gsson@fnord.se>
+Copyright: 2009, Henrik Gustafsson <henrik.gustafsson@fnord.se>
 License: ISC
   Permission to use, copy, modify, and distribute this software for any
   purpose with or without fee is hereby granted, provided that the above

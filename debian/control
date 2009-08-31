@@ -1,7 +1,7 @@
 Source: affinity
 Section: python
 Priority: extra
-Maintainer: Henrik Gustafsson <gsson@fnord.se>
+Maintainer: Henrik Gustafsson <henrik.gustafsson@fnord.se>
 Build-Depends: debhelper (>> 7), python, python-central (>= 0.5)
 Standards-Version: 3.8.0
 XS-Python-Version: 2.5
