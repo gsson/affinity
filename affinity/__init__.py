@@ -16,8 +16,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 try:
     import ctypes, ctypes.util
-    import multiprocessing
     import os
+
+    _ncpus = os.sysconf('SC_NPROCESSORS_ONLN')
+    if _ncpus < 1:
+        raise ImportError, 'Unsupported platform'
 
     _libc = ctypes.CDLL(ctypes.util.find_library('c'))
     
@@ -26,7 +29,6 @@ try:
 
     class _cpuset(ctypes.Structure):
         _fields_ = [("bits", ctypes.c_ulong * (_CPU_SET_SIZE / _NCPUBITS))]
-        _cpus = multiprocessing.cpu_count()
         
         def __init__(self, l = None):
             for x in xrange(_CPU_SET_SIZE / _NCPUBITS):
@@ -36,17 +38,17 @@ try:
                     self.enable(c)
         
         def enable(self, n):
-            if n < 0 or n >= _cpuset. _cpus:
+            if n < 0 or n >= _ncpus:
                 raise ValueError, 'CPU id out of bounds'
             self.bits[n / _NCPUBITS] |= 1 << (n % _NCPUBITS)
         
         def is_enabled(self, n):
-            if n < 0 or n >= _cpuset._cpus:
+            if n < 0 or n >= _ncpus:
                 raise ValueError, 'CPU id out of bounds'
             return ((self.bits[n / _NCPUBITS]) & (1 << (n % _NCPUBITS))) != 0
         
         def to_list(self):
-            return [ i for i in range(_cpuset._cpus) if self.is_enabled(i) ]
+            return [ i for i in range(_ncpus) if self.is_enabled(i) ]
     
     _sched_setaffinity = _libc.sched_setaffinity
     _sched_setaffinity.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.POINTER(_cpuset)]
