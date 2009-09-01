@@ -1,1 +1,1 @@
-orb source: diff-contains-git-control-dir .git
+affinity source: diff-contains-git-control-dir .git
